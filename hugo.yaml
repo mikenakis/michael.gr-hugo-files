@@ -14,7 +14,7 @@ theme: hugo-theme-stack
 
 frontmatter:
     date:
-        - create_time
+        - created_time
         - date
         - :git
         - :filename

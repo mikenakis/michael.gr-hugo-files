@@ -23,10 +23,10 @@
 			</ol>
 		{{ end }}	
 
+		<a href="/"><img src="/logo.svg" width="210" loading="lazy" alt="Logo"></a>
+
 		{{ with .Site.Params.sidebar.avatar }}
 		
-			<img src="logo.svg" width="200" loading="lazy" alt="Logo">
-
 			{{ if (default true .enabled) }}
 				<figure class="site-avatar">
 					 <a href="{{ .Site.BaseURL | relLangURL }}">
@@ -35,9 +35,7 @@
 						{{ else }}
 							{{ $avatar := resources.Get (.src) }}
 							{{ if $avatar }}
-								{{ $avatarResized := $avatar.Resize "300x" }}
-									<img src="{{ $avatarResized.RelPermalink }}" width="{{ $avatarResized.Width }}"
-										height="{{ $avatarResized.Height }}" class="site-logo" loading="lazy" alt="Avatar">
+								<img src="{{ $avatar.RelPermalink }}" width="300x" height="300x" class="site-logo" loading="lazy" alt="Avatar">
 							{{ else }}
 								{{ errorf "Failed loading avatar from %q" . }}
 							{{ end }}
