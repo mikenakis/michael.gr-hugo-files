@@ -1,0 +1,222 @@
+# baseurl: https://example.com/
+languageCode: en-us
+title: Michael's Blog
+copyright: Michael Belivanakis (a.k.a. Mike Nakis)
+publishDir: ../michael.gr-hugo-publish
+themesDir: ../michael.gr-hugo-themes
+contentDir: ../obsidian/blog.michael.gr/content
+theme: hugo-theme-stack
+
+# date:        the time coordinate when the post was first published.
+# lastmod:     the time coordinate when the post was last updated.
+# publishDate: the time coordinate at which the post is scheduled to be published.
+# expiryDate:  the time coordinate at which the post expired or is to expire. PEARL: if you set it to 'date', hugo goes haywire with nonsensical error messages.
+
+frontmatter:
+    date:
+        - create_time
+        - date
+        - :git
+        - :filename
+        - :fileModTime
+    lastmod:
+        - updated_time
+        - lastmod
+        - :git
+        - :fileModTime
+        - date
+    publishDate:
+        - scheduled_time
+        - date
+    expiryDate:
+        - expiration_time
+        - expiryDate
+
+services:
+    # GA Tracking ID
+    googleAnalytics:
+        id:
+
+pagination:
+    pagerSize: 6
+
+permalinks:
+    post: /p/:slug/
+    page: /:slug/
+
+params:
+    mainSections:
+        - post
+    featuredImageField: image
+    rssFullContent: true
+    favicon: /favicon.ico  # favicon placed in `static/favicon.ico`
+
+    footer:
+        since: 2020
+        customText:
+            Some custom footer text
+
+    dateFormat:
+        published: Jan 02, 2006
+        lastUpdated: Jan 02, 2006 15:04 MST
+
+    sidebar:
+        # emoji: 🍥
+        # subtitle: 'If it''s worth doing, it''s worth doing right.'
+        avatar:
+            enabled: true
+            local: false
+            src: https://gravatar.com/avatar/8d1c5b5578843f958430afe30e0cbb2fb5092b1712d1933ea37d7bf5cb4305ed?size=400
+        logo:
+            local: true
+            src: michael_gr_logo_5.svg
+
+    article:
+        math: false
+        toc: true
+        readingTime: true
+
+    widgets:
+        homepage:
+            - type: search
+            - type: archives
+              params:
+                  limit: 5
+            - type: categories
+              params:
+                  limit: 10
+            - type: tag-cloud
+              params:
+                  limit: 10
+        page:
+            - type: toc
+
+    defaultImage:
+        opengraph:
+            enabled: false
+            local: false
+            src:
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+
+        # Available values: auto, light, dark
+        default: auto
+
+    imageProcessing:
+        cover:
+            enabled: true
+        content:
+            enabled: true
+
+### Custom menu
+### See https://stack.jimmycai.com/config/menu
+### To remove about, archive and search page menu item, remove `menu` field from their FrontMatter
+menu:
+    main: []
+
+    social:
+        - identifier: e-mail
+          name: e-Mail
+          url: todo
+          weight: 1
+          params:
+              icon: mail
+
+        - identifier: whatsapp
+          name: WhatsApp
+          url: todo
+          weight: 2
+          params:
+              icon: brand-whatsapp
+
+        - identifier: linkedin
+          name: LinkedIn
+          url: https://www.linkedin.com/in/mikenakis
+          weight: 5
+          params:
+              icon: brand-linkedin
+
+        - identifier: twitter
+          name: Twitter
+          url: https://twitter.com/mikenakis
+          weight: 8
+          params:
+              icon: brand-twitter
+              
+#        - identifier: facebook
+#          name: Facebook
+#          url: https://stackoverflow.com/users/773113/mike-nakis
+#          weight: 3
+#          params:
+#              icon: brand-facebook
+
+        - identifier: github
+          name: GitHub
+          url: https://github.com/mikenakis
+          weight: 4
+          params:
+              icon: brand-github
+
+#       - identifier: paypal
+#         name: Paypal
+#         url: https://paypal.me/mikenakis
+#         weight: 6
+#         params:
+#             icon: brand-paypal
+#
+        - identifier: stackoverflow
+          name: Stack Overflow
+          url: https://stackoverflow.com/users/773113/mike-nakis
+          weight: 7
+          params:
+              icon: brand-stackoverflow
+
+#        - identifier: youtube
+#          name: YouTube
+#          url: https://stackoverflow.com/users/773113/mike-nakis
+#          weight: 9
+#          params:
+#              icon: brand-youtube
+
+related:
+    includeNewer: true
+    threshold: 60
+    toLower: false
+    indices:
+        - name: tags
+          weight: 100
+
+        - name: categories
+          weight: 200
+
+markup:
+    goldmark:
+        extensions:
+            passthrough:
+                enable: true
+                delimiters:
+                    block:
+                        - - \[
+                          - \]
+                        - - $$
+                          - $$
+                    inline:
+                        - - \(
+                          - \)
+        renderer:
+            ## Set to true if you have HTML content inside Markdown
+            unsafe: true
+    tableOfContents:
+        startLevel: 2
+        endLevel: 4
+        ordered: true
+    highlight:
+        noClasses: false
+        codeFences: true
+        guessSyntax: true
+        lineNoStart: 1
+        lineNos: true
+        lineNumbersInTable: true
+        tabWidth: 4
