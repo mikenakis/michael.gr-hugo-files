@@ -57,8 +57,15 @@ params:
             Some custom footer text
 
     dateFormat:
-        published: Jan 02, 2006
-        lastUpdated: Jan 02, 2006 15:04 MST
+        # PEARL: You might think that readonly <input> elements of type "date" and "time" could be used so as to have 
+        #        the browser display date and time in whatever format the user prefers, but this does not work, because
+        #        browsers do not bother getting the user preferences for date and time format from the operating system.
+        #        So, we have no option but to pick a date and time format to display time with, and if the user does not
+        #        like it, it is the user's problem.
+        # PEARL: the format strings understood by Hugo are EXTREMELY weird.
+        # See https://gohugo.io/functions/time/format/ and https://pkg.go.dev/time#pkg-constants
+        published: "2006-01-02 Mon 15:04:05 MST"
+        lastUpdated: "2006-01-02 Mon 15:04:05 MST"
 
     sidebar:
         # emoji: 🍥
