@@ -14,13 +14,13 @@ theme: hugo-theme-stack
 
 frontmatter:
     date:
-        - created_time
+        - time_created
         - date
         - :git
         - :filename
         - :fileModTime
     lastmod:
-        - updated_time
+        - time_updated
         - lastmod
         - :git
         - :fileModTime
@@ -52,7 +52,7 @@ params:
     favicon: /favicon.ico  # favicon placed in `static/favicon.ico`
 
     footer:
-        since: 2020
+        since: 2007
         customText:
             Some custom footer text
 
@@ -69,7 +69,7 @@ params:
             src: https://gravatar.com/avatar/8d1c5b5578843f958430afe30e0cbb2fb5092b1712d1933ea37d7bf5cb4305ed?size=400
         logo:
             local: true
-            src: michael_gr_logo_5.svg
+            src: logo.svg
 
     article:
         math: false
@@ -81,13 +81,13 @@ params:
             - type: search
             - type: archives
               params:
-                  limit: 5
-            - type: categories
-              params:
-                  limit: 10
+                  limit: 100 # 5
+#            - type: categories
+#              params:
+#                  limit: 10
             - type: tag-cloud
               params:
-                  limit: 10
+                  limit: 100 # 10
         page:
             - type: toc
 
@@ -104,11 +104,11 @@ params:
         # Available values: auto, light, dark
         default: auto
 
-    imageProcessing:
-        cover:
-            enabled: true
-        content:
-            enabled: true
+#    imageProcessing:
+#        cover:
+#            enabled: true
+#        content:
+#            enabled: true
 
 ### Custom menu
 ### See https://stack.jimmycai.com/config/menu
@@ -119,14 +119,14 @@ menu:
     social:
         - identifier: e-mail
           name: e-Mail
-          url: todo
+          url: /todo
           weight: 1
           params:
               icon: mail
 
         - identifier: whatsapp
           name: WhatsApp
-          url: todo
+          url: /todo
           weight: 2
           params:
               icon: brand-whatsapp
