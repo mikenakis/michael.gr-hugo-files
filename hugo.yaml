@@ -4,7 +4,7 @@ title: Michael's Blog
 copyright: Michael Belivanakis (a.k.a. Mike Nakis)
 publishDir: ../michael.gr-hugo-publish
 themesDir: ../michael.gr-hugo-themes
-contentDir: ../obsidian/blog.michael.gr/content
+# contentDir: ../obsidian/blog.michael.gr/content
 theme: hugo-theme-stack
 
 # date:        the time coordinate when the post was first published.
@@ -154,7 +154,7 @@ menu:
               
 #        - identifier: facebook
 #          name: Facebook
-#          url: https://stackoverflow.com/users/773113/mike-nakis
+#          url: /todo
 #          weight: 3
 #          params:
 #              icon: brand-facebook
