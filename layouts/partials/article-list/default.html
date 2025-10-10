@@ -21,7 +21,7 @@
     {{ partialCached "article/components/details" . .RelPermalink }}
 
 	<!-- From https://gohugo.io/methods/page/truncated/ -->
-	<section class="article-subtitle">
+	<section class="article-content" style="margin-top: -1.5em; margin-bottom: 1.5em;">
 		{{ .Summary }}
 		{{ if .Truncated }}
 			<a href="{{ .RelPermalink }}">Read more...</a>

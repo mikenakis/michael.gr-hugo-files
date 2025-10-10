@@ -2,9 +2,9 @@
 languageCode: en-us
 title: Michael's Blog
 copyright: Michael Belivanakis (a.k.a. Mike Nakis)
-publishDir: ../michael.gr-hugo-publish
-themesDir: ../michael.gr-hugo-themes
-# contentDir: ../obsidian/blog.michael.gr/content
+# publishDir: ../../../michael.gr-hugo-publish
+# themesDir: ../../../hugo-themes
+# contentDir: ../content
 theme: hugo-theme-stack
 
 # date:        the time coordinate when the post was first published.
