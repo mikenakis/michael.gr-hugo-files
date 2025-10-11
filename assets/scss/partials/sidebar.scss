@@ -154,7 +154,8 @@
 
 [data-scheme="dark"] {
     #dark-mode-toggle {
-        color: var(--accent-color);
+	    color: var(--link-color);
+        /*color: var(--accent-color);*/
         font-weight: 700;
 
         .icon-tabler-toggle-left {
@@ -169,7 +170,7 @@
 
 #dark-mode-toggle {
     margin-top: auto;
-    color: var(--body-text-color);
+    color: var(--link-color);
     display: flex;
     align-items: center;
     cursor: pointer;
