@@ -1,0 +1,3 @@
+<!-- from https://discourse.gohugo.io/t/relative-markdown-links-markdown-render-hooks/22674 
+ Use as follows: [About these papers](../../../2022/11/about-these-papers/index.md)) -->
+<a class="link" href="{{ (.Page.GetPage .Destination).RelPermalink | safeURL }}">{{ .Text | safeHTML }}</a>
