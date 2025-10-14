@@ -1,11 +1,24 @@
-<!-- from https://github.com/bep/portable-hugo-links/blob/master/layouts/_default/_markup/render-link.html -->
-{{ $link := .Destination }}
-{{ $isRemote := strings.HasPrefix $link "http" }}
-{{- if not $isRemote -}}
-{{ $url := urls.Parse .Destination }}
-{{- if $url.Path -}}
-{{ $fragment := "" }}
-{{- with $url.Fragment }}{{ $fragment = printf "#%s" . }}{{ end -}}
-{{- with .Page.GetPage $url.Path }}{{ $link = printf "%s%s" .RelPermalink $fragment }}{{ else }}{{ warnf "%q not found from %q" $url.Path $.Page.Path }}{{ end }}{{ end -}}
+<!-- 
+    from https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html 
+	adjusted by me to issue a warning when an internal link is not found.
+-->
+{{- $u := urls.Parse .Destination -}}
+{{- $href := $u.String -}}
+{{- if strings.HasPrefix $u.String "#" -}}
+	{{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
+{{- else if and $href (not $u.IsAbs) -}}
+	{{- $path := strings.TrimPrefix "./" $u.Path -}}
+	{{- with or ($.PageInner.GetPage $path) ($.PageInner.Resources.Get $path) (resources.Get $path) -}}
+		{{- $href = .RelPermalink -}}
+		{{- with $u.RawQuery -}}
+			{{- $href = printf "%s?%s" $href . -}}
+		{{- end -}}
+		{{- with $u.Fragment -}}
+			{{- $href = printf "%s#%s" $href . -}}
+		{{- end -}}
+	{{- else -}}
+	    {{- warnf "'%s': item not found: '%s'" .Page.Path .Destination  -}}
+	{{- end -}}
 {{- end -}}
-<a href="{{ $link | safeURL }}"{{ with .Title}} title="{{ . }}"{{ end }}{{ if $isRemote }} target="_blank"{{ end }}>{{ .Text | safeHTML }}</a>
+<a href="{{ $href }}" {{- with .Title }} title="{{ . }}" {{- end }}>{{ .Text }}</a>
+{{- /**/ -}}
