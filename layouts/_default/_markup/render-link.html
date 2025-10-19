@@ -1,24 +1,31 @@
 <!-- 
     from https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html 
-	adjusted by me to issue a warning when an internal link is not found.
+	adjusted by me to:
+     - issue a warning when an internal link is not found.
+     - add "external" class when the link is external.
 -->
 {{- $u := urls.Parse .Destination -}}
 {{- $href := $u.String -}}
+{{- $class := "" -}}
 {{- if strings.HasPrefix $u.String "#" -}}
 	{{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
-{{- else if and $href (not $u.IsAbs) -}}
-	{{- $path := strings.TrimPrefix "./" $u.Path -}}
-	{{- with or ($.PageInner.GetPage $path) ($.PageInner.Resources.Get $path) (resources.Get $path) -}}
-		{{- $href = .RelPermalink -}}
-		{{- with $u.RawQuery -}}
-			{{- $href = printf "%s?%s" $href . -}}
-		{{- end -}}
-		{{- with $u.Fragment -}}
-			{{- $href = printf "%s#%s" $href . -}}
-		{{- end -}}
-	{{- else -}}
-	    {{- warnf "'%s': item not found: '%s'" .Page.Path .Destination  -}}
-	{{- end -}}
+{{- else if $href -}}
+    {{- if $u.IsAbs -}}
+        {{- $class = "external" -}}
+    {{- else -}}
+	    {{- $path := strings.TrimPrefix "./" $u.Path -}}
+	    {{- with or ($.PageInner.GetPage $path) ($.PageInner.Resources.Get $path) (resources.Get $path) -}}
+		    {{- $href = .RelPermalink -}}
+		    {{- with $u.RawQuery -}}
+			    {{- $href = printf "%s?%s" $href . -}}
+		    {{- end -}}
+		    {{- with $u.Fragment -}}
+			    {{- $href = printf "%s#%s" $href . -}}
+		    {{- end -}}
+	    {{- else -}}
+	        {{- warnf "'%s': item not found: '%s'" .Page.Path .Destination  -}}
+	    {{- end -}}
+    {{- end -}}
 {{- end -}}
-<a href="{{ $href }}" {{- with .Title }} title="{{ . }}" {{- end }}>{{ .Text }}</a>
+<a {{- with $class }} class="{{ $class }}" {{- end }} href="{{ $href }}" {{- with .Title }} title="{{ . }}" {{- end }}>{{ .Text }}</a>
 {{- /**/ -}}

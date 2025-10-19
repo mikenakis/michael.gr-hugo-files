@@ -143,31 +143,183 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 }
 
 /*
-*   Shadow style
-*   Thanks to https://www.figma.com/community/plugin/744987207861965946/Shadow-picker
-*/
-:root {
-    --shadow-l1: 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 0px 2px rgba(0, 0, 0, 0.06), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l2: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l3: 0px 10px 20px rgba(0, 0, 0, 0.04), 0px 2px 6px rgba(0, 0, 0, 0.04), 0px 0px 1px rgba(0, 0, 0, 0.04);
-    --shadow-l4: 0px 24px 32px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04), 0px 4px 8px rgba(0, 0, 0, 0.04),
-        0px 0px 1px rgba(0, 0, 0, 0.04);
+ * Style: monokailight (https://xyproto.github.io/splash/docs/monokailight.html)
+ */
+$color: #272822;
+$background-color: #fafafa;
+$error-color: #960050;
+$keyword-color: #00a8c8;
+$text-color: #111111;
+$name-color: #75af00;
+$literal-color: #d88200;
+
+a.external
+{
+//background-image: url(https://en.wikipedia.org/w/skins/Vector/resources/skins.vector.styles/images/link-external-small-ltr-progressive.svg?fb64d);
+background-image: url(/external-link.svg);
+background-position: center right;
+background-repeat: no-repeat;
+background-size: 0.857em;
+padding-right: 1em;
 }
 
-[data-scheme="light"] {
+[data-scheme="light"]
+{
     --pre-text-color: #272822;
     --pre-background-color: #fafafa;
-    @import "partials/highlight/light.scss";
+    --shadow-color-1: rgba(0, 0, 0, 0.04);
+    --shadow-color-2: rgba(0, 0, 0, 0.06);
 }
 
-[data-scheme="dark"] {
+[data-scheme="dark"] 
+{
     --pre-text-color: #f8f8f2;
     --pre-background-color: #272822;
-    @import "partials/highlight/dark.scss";
+    --shadow-color-1: rgba(0, 0, 0, 0.2);
+    --shadow-color-2: rgba(0, 0, 0, 0.3);
+    /*
+     * Style: monokai (https://xyproto.github.io/splash/docs/monokai.html)
+     */
+    $color: #f8f8f2;
+    $background-color: #272822;
+    $error-color: #bb0064;
+    $keyword-color: #66d9ef;
+    $text-color: $color;
+    $name-color: #a6e22e;
+    $literal-color: #e6db74;
 }
 
-:root {
+/*
+ * Shadow style, Thanks to https://www.figma.com/community/plugin/744987207861965946/Shadow-picker
+ */
+:root
+{
+    --shadow-l1: 0px 4px 8px var(--shadow-color-1), 0px 0px 2px var(--shadow-color-2), 0px 0px 1px var(--shadow-color-1);
+    --shadow-l2: 0px 10px 20px var(--shadow-color-1), 0px 2px 6px var(--shadow-color-1), 0px 0px 1px var(--shadow-color-1);
+    --shadow-l3: 0px 10px 20px var(--shadow-color-1), 0px 2px 6px var(--shadow-color-1), 0px 0px 1px var(--shadow-color-1);
+    --shadow-l4: 0px 24px 32px var(--shadow-color-1), 0px 16px 24px var(--shadow-color-1), 0px 4px 8px var(--shadow-color-1), 0px 0px 1px var(--shadow-color-1);
+}
+
+:root
+{
     --menu-icon-separation: 40px;
     --container-padding: 15px;
     --widget-separation: var(--section-separation);
 }
+
+/*
+ * Syntax highlighting (used to be in partials/highlight/common.css)
+ */
+
+/* LineTableTD */
+.chroma .lntd
+{
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+/* LineTable */
+.chroma .lntable 
+{
+    border-spacing: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 100%;
+    display: block;
+
+    > tbody 
+    {
+        display: block;
+        width: 100%;
+        > tr 
+        {
+            display: flex;
+            width: 100%;
+            > td:last-child { overflow-x: auto; }
+        }
+    }
+}
+
+/* Background               */ .chroma      { color: $color; background-color: $background-color; }
+/* Other                    */ .chroma .x   { }
+/* Error                    */ .chroma .err { color: $error-color; }
+/* LineHighlight            */ .chroma .hl  { background-color: #ffffcc; display: block; width: 100%; }
+/* LineNumbersTable         */ .chroma .lnt { color: #7f7f7f; margin-right: 0.4em; padding: 0 0.4em 0 0.4em; display: block; }
+/* LineNumbers              */ .chroma .ln  { color: #7f7f7f; margin-right: 0.4em; padding: 0 0.4em 0 0.4em; }
+/* Keyword                  */ .chroma .k   { color: $keyword-color; }
+/* KeywordConstant          */ .chroma .kc  { color: $keyword-color; }
+/* KeywordDeclaration       */ .chroma .kd  { color: $keyword-color; }
+/* KeywordNamespace         */ .chroma .kn  { color: #f92672; }
+/* KeywordPseudo            */ .chroma .kp  { color: $keyword-color; }
+/* KeywordReserved          */ .chroma .kr  { color: $keyword-color; }
+/* KeywordType              */ .chroma .kt  { color: $keyword-color; }
+/* Name                     */ .chroma .n   { color: $text-color; }
+/* NameAttribute            */ .chroma .na  { color: $name-color; }
+/* NameBuiltin              */ .chroma .nb  { color: $text-color; }
+/* NameBuiltinPseudo        */ .chroma .bp  { color: $text-color; }
+/* NameClass                */ .chroma .nc  { color: $name-color; }
+/* NameConstant             */ .chroma .no  { color: $keyword-color; }
+/* NameDecorator            */ .chroma .nd  { color: $name-color; }
+/* NameEntity               */ .chroma .ni  { color: $text-color; }
+/* NameException            */ .chroma .ne  { color: $name-color; }
+/* NameFunction             */ .chroma .nf  { color: $name-color; }
+/* NameFunctionMagic        */ .chroma .fm  { color: $text-color; }
+/* NameLabel                */ .chroma .nl  { color: $text-color; }
+/* NameNamespace            */ .chroma .nn  { color: $text-color; }
+/* NameOther                */ .chroma .nx  { color: $name-color; }
+/* NameProperty             */ .chroma .py  { color: $text-color; }
+/* NameTag                  */ .chroma .nt  { color: #f92672; }
+/* NameVariable             */ .chroma .nv  { color: $text-color; }
+/* NameVariableClass        */ .chroma .vc  { color: $text-color; }
+/* NameVariableGlobal       */ .chroma .vg  { color: $text-color; }
+/* NameVariableInstance     */ .chroma .vi  { color: $text-color; }
+/* NameVariableMagic        */ .chroma .vm  { color: $text-color; }
+/* Literal                  */ .chroma .l   { color: #ae81ff; }
+/* LiteralDate              */ .chroma .ld  { color: $literal-color; }
+/* LiteralString            */ .chroma .s   { color: $literal-color; }
+/* LiteralStringAffix       */ .chroma .sa  { color: $literal-color; }
+/* LiteralStringBacktick    */ .chroma .sb  { color: $literal-color; }
+/* LiteralStringChar        */ .chroma .sc  { color: $literal-color; }
+/* LiteralStringDelimiter   */ .chroma .dl  { color: $literal-color; }
+/* LiteralStringDoc         */ .chroma .sd  { color: $literal-color; }
+/* LiteralStringDouble      */ .chroma .s2  { color: $literal-color; }
+/* LiteralStringEscape      */ .chroma .se  { color: #ae81ff; }
+/* LiteralStringHeredoc     */ .chroma .sh  { color: $literal-color; }
+/* LiteralStringInterpol    */ .chroma .si  { color: $literal-color; }
+/* LiteralStringOther       */ .chroma .sx  { color: $literal-color; }
+/* LiteralStringRegex       */ .chroma .sr  { color: $literal-color; }
+/* LiteralStringSingle      */ .chroma .s1  { color: $literal-color; }
+/* LiteralStringSymbol      */ .chroma .ss  { color: $literal-color; }
+/* LiteralNumber            */ .chroma .m   { color: #ae81ff; }
+/* LiteralNumberBin         */ .chroma .mb  { color: #ae81ff; }
+/* LiteralNumberFloat       */ .chroma .mf  { color: #ae81ff; }
+/* LiteralNumberHex         */ .chroma .mh  { color: #ae81ff; }
+/* LiteralNumberInteger     */ .chroma .mi  { color: #ae81ff; }
+/* LiteralNumberIntegerLong */ .chroma .il  { color: #ae81ff; }
+/* LiteralNumberOct         */ .chroma .mo  { color: #ae81ff; }
+/* Operator                 */ .chroma .o   { color: #f92672; }
+/* OperatorWord             */ .chroma .ow  { color: #f92672; }
+/* Punctuation              */ .chroma .p   { color: $text-color; }
+/* Comment                  */ .chroma .c   { color: #75715e; }
+/* CommentHashbang          */ .chroma .ch  { color: #75715e; }
+/* CommentMultiline         */ .chroma .cm  { color: #75715e; }
+/* CommentSingle            */ .chroma .c1  { color: #75715e; }
+/* CommentSpecial           */ .chroma .cs  { color: #75715e; }
+/* CommentPreproc           */ .chroma .cp  { color: #75715e; }
+/* CommentPreprocFile       */ .chroma .cpf { color: #75715e; }
+/* Generic                  */ .chroma .g   { }
+/* GenericDeleted           */ .chroma .gd  { color: #f92672; }
+/* GenericEmph              */ .chroma .ge  { font-style: italic; }
+/* GenericError             */ .chroma .gr  { }
+/* GenericHeading           */ .chroma .gh  { }
+/* GenericInserted          */ .chroma .gi  { color: $name-color; }
+/* GenericOutput            */ .chroma .go  { }
+/* GenericPrompt            */ .chroma .gp  { }
+/* GenericStrong            */ .chroma .gs  { font-weight: bold; }
+/* GenericSubheading        */ .chroma .gu  { color: #75715e; }
+/* GenericTraceback         */ .chroma .gt  { }
+/* GenericUnderline         */ .chroma .gl  { }
+/* TextWhitespace           */ .chroma .w   { }
