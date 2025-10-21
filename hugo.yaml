@@ -52,7 +52,7 @@ params:
     favicon: /favicon.ico  # favicon placed in `static/favicon.ico`
 
     footer:
-        since: 2007
+        since: 2001 # copyright "since"
         customText:
             Some custom footer text
 

@@ -152,32 +152,22 @@
     }
 }
 
-[data-scheme="dark"] {
-    #dark-mode-toggle {
-	    color: var(--link-color);
-        /*color: var(--accent-color);*/
-        font-weight: 700;
-
-        .icon-tabler-toggle-left {
-            display: none;
-        }
-
-        .icon-tabler-toggle-right {
-            display: unset;
-        }
-    }
-}
-
-#dark-mode-toggle {
+#dark-mode-toggle
+{
     margin-top: auto;
-    color: var(--link-color);
+    color: var(--body-text-color);
     display: flex;
     align-items: center;
     cursor: pointer;
     gap: var(--menu-icon-separation);
 
-    .icon-tabler-toggle-right {
-        display: none;
+    .icon-tabler-toggle-right { display: none; }
+
+    [data-scheme="dark"]
+    {
+        font-weight: 700;
+        .icon-tabler-toggle-left { display: none; }
+        .icon-tabler-toggle-right { display: unset; }
     }
 }
 
