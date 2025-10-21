@@ -39,6 +39,9 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --menu-icon-separation: 40px;
     --container-padding: 15px;
     --widget-separation: var(--section-separation);
+
+    --blockquote-border-size: 4px;
+    --heading-border-size: 4px;
 }
 
 /*
@@ -56,6 +59,36 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --scrollbar-thumb: hsl(30, 50%, 75%);
     --scrollbar-track: hsl(30, 50%, 65%);
 
+    --shadow-color-1: rgba(0, 0, 0, 0.04);
+    --shadow-color-2: rgba(0, 0, 0, 0.06);
+
+    --blockquote-background-color: rgb(248 248 248);
+
+    --link-background-color: 189, 195, 199;
+    --link-background-opacity: 0.5;
+    --link-background-opacity-hover: 0.7;
+
+    --pre-background-color: #fafafa;
+    --pre-text-color: #272822;
+    /*
+     * Style: monokailight (https://xyproto.github.io/splash/docs/monokailight.html)
+     */
+    --highlight-color: #272822;
+    --highlight-background-color: #fafafa;
+    --highlight-error-color: #960050;
+    --highlight-keyword-color: #00a8c8;
+    --highlight-text-color: #111111;
+    --highlight-name-color: #75af00;
+    --highlight-literal-color: #d88200;
+
+    --code-background-color: rgba(0, 0, 0, 0.12);
+    --code-text-color: #404040;
+
+    --table-border-color: #dadada;
+    --tr-even-background-color: #efefee;
+
+    --kbd-border-color: #dadada;
+
     &[data-scheme="dark"] 
     {
         --body-background: #101015;
@@ -65,9 +98,45 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
         --accent-color-darker: #404050;
         --link-color: rgba(235, 235, 255, 0.7);
         --link-color-hover: rgba(235, 235, 255, 0.9);
+
         --scrollbar-thumb: hsl(0, 0%, 40%);
         --scrollbar-track: var(--body-background);
+
+        --shadow-color-1: rgba(0, 0, 0, 0.2);
+        --shadow-color-2: rgba(0, 0, 0, 0.3);
+
+        --blockquote-background-color: rgb(75 75 75);
+
+	    --link-background-color: 89, 89, 109;
+
+        --pre-background-color: #272822;
+        --pre-text-color: #f8f8f2;
+        /*
+         * Style: monokai (https://xyproto.github.io/splash/docs/monokai.html)
+         */
+        --highlight-color: #f8f8f2;
+        --highlight-background-color: #272822;
+        --highlight-error-color: #bb0064;
+        --highlight-keyword-color: #66d9ef;
+        --highlight-text-color: --highlight-color;
+        --highlight-name-color: #a6e22e;
+        --highlight-literal-color: #e6db74;
+
+        --code-background-color: #272822;
+        --code-text-color: rgba(255, 255, 255, 0.7);
+
+        --table-border-color: #717171;
+        --tr-even-background-color: #545454;
     }
+}
+
+
+[data-scheme="light"] 
+{
+}
+
+[data-scheme="dark"] 
+{
 }
 
 /*
@@ -92,7 +161,8 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --small-card-padding: 25px 20px;
     @include respond(md) { --small-card-padding: 25px; }
 
-    &[data-scheme="dark"] {
+    &[data-scheme="dark"] 
+    {
         --card-background: #16161d;
         --card-background-selected: rgba(255, 255, 255, 0.16);
         --card-text-color-main: rgba(255, 255, 255, 0.9);
@@ -115,45 +185,6 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --article-line-height: 1.85;
 }
 
-/*
-*   Article content style
-*/
-:root 
-{
-    --blockquote-border-size: 4px;
-    --heading-border-size: 4px;
-
-    --blockquote-background-color: rgb(248 248 248);
-
-    --link-background-color: 189, 195, 199;
-    --link-background-opacity: 0.5;
-    --link-background-opacity-hover: 0.7;
-
-    --pre-background-color: #272822;
-    --pre-text-color: #f8f8f2;
-
-    --code-background-color: rgba(0, 0, 0, 0.12);
-    --code-text-color: #404040;
-
-    --table-border-color: #dadada;
-    --tr-even-background-color: #efefee;
-
-    --kbd-border-color: #dadada;
-
-    &[data-scheme="dark"] 
-    {
-        --blockquote-background-color: rgb(75 75 75);
-
-	    --link-background-color: 89, 89, 109;
-
-        --code-background-color: #272822;
-        --code-text-color: rgba(255, 255, 255, 0.7);
-
-        --table-border-color: #717171;
-        --tr-even-background-color: #545454;
-    }
-}
-
 a.external
 {
     background-image: url(/external-link.svg);
@@ -161,42 +192,6 @@ a.external
     background-repeat: no-repeat;
     background-size: 0.857em;
     padding-right: 1em;
-}
-
-[data-scheme="light"] 
-{
-    --pre-text-color: #272822;
-    --pre-background-color: #fafafa;
-    --shadow-color-1: rgba(0, 0, 0, 0.04);
-    --shadow-color-2: rgba(0, 0, 0, 0.06);
-    /*
-     * Style: monokailight (https://xyproto.github.io/splash/docs/monokailight.html)
-     */
-    --highlight-color: #272822;
-    --highlight-background-color: #fafafa;
-    --highlight-error-color: #960050;
-    --highlight-keyword-color: #00a8c8;
-    --highlight-text-color: #111111;
-    --highlight-name-color: #75af00;
-    --highlight-literal-color: #d88200;
-}
-
-[data-scheme="dark"] 
-{
-    --pre-text-color: #f8f8f2;
-    --pre-background-color: #272822;
-    --shadow-color-1: rgba(0, 0, 0, 0.2);
-    --shadow-color-2: rgba(0, 0, 0, 0.3);
-    /*
-     * Style: monokai (https://xyproto.github.io/splash/docs/monokai.html)
-     */
-    --highlight-color: #f8f8f2;
-    --highlight-background-color: #272822;
-    --highlight-error-color: #bb0064;
-    --highlight-keyword-color: #66d9ef;
-    --highlight-text-color: --highlight-color;
-    --highlight-name-color: #a6e22e;
-    --highlight-literal-color: #e6db74;
 }
 
 /*
@@ -211,7 +206,7 @@ a.external
 }
 
 /*
- * Syntax highlighting (used to be in partials/highlight/common.css)
+ * Syntax highlighting (used to be in partials/highlight/common.css, partials/highlight/light.css, and partials/highlight/dark.css)
  */
 
 /* LineTableTD */
@@ -343,5 +338,36 @@ a.external
 @import "partials/layout/404.scss";
 @import "partials/layout/search.scss";
 
-@import "general.scss";
-@import "custom.scss";
+a 
+{
+    text-decoration: none;
+    color: var(--link-color);
+
+    &:hover {
+        color: var(--link-color-hover);
+    }
+
+    &.link {
+        box-shadow: 0px -2px 0px rgba(var(--link-background-color), var(--link-background-opacity)) inset;
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0px calc(-1rem * var(--article-line-height)) 0px rgba(var(--link-background-color), var(--link-background-opacity-hover)) inset;
+        }
+    }
+}
+
+.section-title
+{
+    /* text-transform: uppercase; */
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: block;
+    font-size: 2.6rem;
+    font-weight: bold;
+    color: var(--body-text-color);
+
+    a {
+        color: var(--body-text-color);
+    }
+}
