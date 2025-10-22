@@ -36,7 +36,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --base-font-family: "Lato", var(--sys-font-family), var(--zh-font-family), sans-serif;
     --code-font-family: Menlo, Monaco, Consolas, "Courier New", var(--zh-font-family), monospace;
 
-    --menu-icon-separation: 40px;
+    --menu-icon-separation: 20px;
     --container-padding: 15px;
     --widget-separation: var(--section-separation);
 
@@ -61,15 +61,12 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --primary-background-color: hsl(0 0% 88.2%);
     --primary-foreground-color: hsl(0 0% 25.1%);
     --blockquote-accent-color: hsl(41 100% 50%);
-    --code-accent-color: hsl(179 50% 50%);
+    --code-accent-color: hsl(0 0% 75%);
 
     //These have no effect because the style that uses them does not work for some reason.
     --link-background-color: 189, 195, 199;
     --link-background-opacity: 0.5;
     --link-background-opacity-hover: 0.7;
-
-    --table-border-color: #dadada;
-    --tr-even-background-color: #efefee;
 
     --kbd-border-color: #dadada;
 
@@ -81,59 +78,49 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
     --card-text-color-tertiary: #767676;
     --card-separator-color: rgba(218, 218, 218, 0.5);
 
+    --shadow-color-1: rgba(0, 0, 0, 0.04);
+    --shadow-color-2: rgba(0, 0, 0, 0.06);
+
     &[data-scheme="dark"] 
     {
         --primary-background-color: hsl(240 13.5% 7.3%);
         --primary-foreground-color: hsl(0 0% 94.5%);
         --blockquote-accent-color: hsl(41 100% 50%);
-        --code-accent-color: hsl(0 0% 100%);
-
-        --shadow-color-1: rgba(0, 0, 0, 0.2);
-        --shadow-color-2: rgba(0, 0, 0, 0.3);
+        --code-accent-color: hsl(240 13.5% 75%);
 
 	    --link-background-color: 89, 89, 109;
 
-        --table-border-color: #717171;
-        --tr-even-background-color: #545454;
-
         --card-background: #16161d;
         --card-background-selected: rgba(255, 255, 255, 0.16);
+        
         --card-text-color-main: rgba(255, 255, 255, 0.9);
         --card-text-color-secondary: rgba(255, 255, 255, 0.7);
         --card-text-color-tertiary: rgba(255, 255, 255, 0.5);
         --card-separator-color: rgba(255, 255, 255, 0.12);
 
-        --table-border-color: #717171;
-        --tr-even-background-color: #545454;
-
-        --card-background: #16161d;
-        --card-background-selected: rgba(255, 255, 255, 0.16);
-        --card-text-color-main: rgba(255, 255, 255, 0.9);
-        --card-text-color-secondary: rgba(255, 255, 255, 0.7);
-        --card-text-color-tertiary: rgba(255, 255, 255, 0.5);
-        --card-separator-color: rgba(255, 255, 255, 0.12);
+        --shadow-color-1: rgba(0, 0, 0, 0.2);
+        --shadow-color-2: rgba(0, 0, 0, 0.3);
     }
 
-    --body-background: color-mix(in oklab, var(--primary-background-color) 100%, var(--primary-foreground-color) 2%);
-    --body-text-color: color-mix(in oklab, var(--primary-foreground-color) 100%, var(--primary-background-color) 10%);
+    --body-background: color-mix(in oklab, var(--primary-background-color) 98%, var(--primary-foreground-color) 2%);
+    --body-text-color: color-mix(in oklab, var(--primary-foreground-color) 90%, var(--primary-background-color) 10%);
     --accent-color-text: var(--body-text-color); //only used for categories/tags
-    --accent-color: color-mix(in oklab, var(--primary-background-color) 100%, var(--primary-foreground-color) 25%); //used for accents left of headings, and category/tag backgrounds
-    --accent-color-darker: color-mix(in oklab, var(--primary-background-color) 90%, var(--primary-foreground-color) 10%); //used when hovering over a category/tag
+    --accent-color: color-mix(in oklab, var(--primary-background-color) 75%, var(--primary-foreground-color) 25%); //used for accents left of headings, and category/tag backgrounds
+    --accent-color-darker: color-mix(in oklab, var(--accent-color) 70%, #FFFFFF 30%); //used when hovering over a category/tag
     --link-color: color-mix(in oklab, var(--primary-foreground-color) 70%, #4040FF 30%);
     --link-color-hover: color-mix(in oklab, var(--primary-foreground-color) 10%, #4040FF 90%);
     --scrollbar-track: color-mix(in oklab, var(--primary-background-color) 100%, var(--primary-foreground-color) 20%);
     --scrollbar-thumb: color-mix(in oklab, var(--primary-background-color) 100%, var(--primary-foreground-color) 50%);
 
-    --shadow-color-1: rgba(0, 0, 0, 0.04);
-    --shadow-color-2: rgba(0, 0, 0, 0.06);
-
     --blockquote-background-color: color-mix(in oklab, var(--primary-background-color) 90%, var(--blockquote-accent-color) 10%);
     --pre-background-color: color-mix(in oklab, var(--primary-background-color) 90%, var(--code-accent-color) 10%);
     --pre-text-color: color-mix(in oklab, var(--primary-foreground-color) 50%, #808000 50%); //regular text if not covered by any highlighting rule
 
-    //--code-background-color: rgba(0, 0, 0, 0.12);
     --code-background-color: color-mix(in oklab, var(--primary-background-color) 80%, var(--code-accent-color) 15%);
     --code-text-color: var(--primary-foreground-color);
+
+    --table-border-color: color-mix(in oklab, var(--primary-background-color) 80%, var(--primary-foreground-color) 20%);
+    --tr-even-background-color: color-mix(in srgb-linear, var(--primary-background-color) 99%, #FFFFFF 1%);
 }
 
 /**
@@ -613,7 +600,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 {
     display: flex;
     color: var(--card-text-color-tertiary);
-    gap: 15px;
+    gap: 30px;
 
     svg 
     {

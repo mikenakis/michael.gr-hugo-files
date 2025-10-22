@@ -208,7 +208,7 @@
     padding: 0 var(--card-padding);
     line-height: var(--article-line-height);
 
-    & > p {
+    & > p, li {
         margin: 1.5em 0;
 		text-align: justify;
 
