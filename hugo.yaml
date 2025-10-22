@@ -126,29 +126,45 @@ menu:
     social:
         - identifier: e-mail
           name: e-Mail
-          url: /todo
+          url: /contact-via-e-mail/
           weight: 1
           params:
               icon: mail
+              newTab: false
 
         - identifier: whatsapp
           name: WhatsApp
-          url: /todo
+          url: /contact-via-whatsapp/
           weight: 2
           params:
               icon: brand-whatsapp
+              newTab: false
+
+        - identifier: github
+          name: GitHub
+          url: https://github.com/mikenakis
+          weight: 3
+          params:
+              icon: brand-github
 
         - identifier: linkedin
           name: LinkedIn
           url: https://www.linkedin.com/in/mikenakis
-          weight: 5
+          weight: 4
           params:
               icon: brand-linkedin
+
+        - identifier: stackoverflow
+          name: Stack Overflow
+          url: https://stackoverflow.com/users/773113/mike-nakis
+          weight: 5
+          params:
+              icon: brand-stackoverflow
 
         - identifier: twitter
           name: Twitter
           url: https://twitter.com/mikenakis
-          weight: 8
+          weight: 6
           params:
               icon: brand-twitter
               
@@ -159,13 +175,6 @@ menu:
 #          params:
 #              icon: brand-facebook
 
-        - identifier: github
-          name: GitHub
-          url: https://github.com/mikenakis
-          weight: 4
-          params:
-              icon: brand-github
-
 #       - identifier: paypal
 #         name: Paypal
 #         url: https://paypal.me/mikenakis
@@ -173,12 +182,6 @@ menu:
 #         params:
 #             icon: brand-paypal
 #
-        - identifier: stackoverflow
-          name: Stack Overflow
-          url: https://stackoverflow.com/users/773113/mike-nakis
-          weight: 7
-          params:
-              icon: brand-stackoverflow
 
 #        - identifier: youtube
 #          name: YouTube
