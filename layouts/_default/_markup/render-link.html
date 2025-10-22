@@ -2,16 +2,19 @@
     from https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html 
 	adjusted by me to:
      - issue a warning when an internal link is not found.
-     - add "external" class when the link is external.
+     - add 'class="external"' when the link is external.
+     - add 'target="_blank"' when the link is external.
 -->
 {{- $u := urls.Parse .Destination -}}
 {{- $href := $u.String -}}
 {{- $class := "" -}}
+{{- $target := "" -}}
 {{- if strings.HasPrefix $u.String "#" -}}
 	{{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
 {{- else if $href -}}
     {{- if $u.IsAbs -}}
         {{- $class = "external" -}}
+        {{- $target = "_blank" -}}
     {{- else -}}
 	    {{- $path := strings.TrimPrefix "./" $u.Path -}}
 	    {{- with or ($.PageInner.GetPage $path) ($.PageInner.Resources.Get $path) (resources.Get $path) -}}
@@ -27,5 +30,10 @@
 	    {{- end -}}
     {{- end -}}
 {{- end -}}
-<a {{- with $class }} class="{{ $class }}" {{- end }} href="{{ $href }}" {{- with .Title }} title="{{ . }}" {{- end }}>{{ .Text }}</a>
+<a 
+   {{- with $class }} class="{{ $class }}" {{- end }} 
+   href="{{ $href }}" 
+   {{- with .Title }} title="{{ . }}" {{- end }} 
+   {{- with $target }} target="{{ $target }}" {{- end }}
+   >{{ .Text }}</a>
 {{- /**/ -}}
