@@ -208,7 +208,7 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 /* NameFunction             */ .chroma .nf  { color: #FF00FF; }
 /* NameFunctionMagic        */ .chroma .fm  { color: #FF00FF; }
 /* NameLabel                */ .chroma .nl  { color: #FF00FF; }
-/* NameNamespace            */ .chroma .nn  { color: #FF00FF; }
+/* NameNamespace            */ .chroma .nn  { color: color-mix(in oklab, var(--primary-foreground-color) 50%, #ffa000 50%); } //namespace names
 /* NameOther                */ .chroma .nx  { color: #FF00FF; }
 /* NameProperty             */ .chroma .py  { color: #FF00FF; }
 /* NameTag                  */ .chroma .nt  { color: var(--primary-foreground-color); font-weight: bold; }
@@ -245,8 +245,8 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 /* Punctuation              */ .chroma .p   { color: var(--primary-foreground-color); font-weight: bold; }
 /* Comment                  */ .chroma .c   { color: #FF00FF; }
 /* CommentHashbang          */ .chroma .ch  { color: #FF00FF; }
-/* CommentMultiline         */ .chroma .cm  { color: #FF00FF; }
-/* CommentSingle            */ .chroma .c1  { color: color-mix(in oklab, var(--primary-foreground-color) 50%, #00FF00 50%); } //single-line comment
+/* CommentMultiline         */ .chroma .cm  { color: color-mix(in oklab, var(--primary-foreground-color) 50%, #00FF00 50%); } // slash-star-star-slash-style comment (not necessarily multiline)
+/* CommentSingle            */ .chroma .c1  { color: color-mix(in oklab, var(--primary-foreground-color) 50%, #00FF00 50%); } // slash-slash-style comment
 /* CommentSpecial           */ .chroma .cs  { color: #FF00FF; }
 /* CommentPreproc           */ .chroma .cp  { color: #FF00FF; }
 /* CommentPreprocFile       */ .chroma .cpf { color: #FF00FF; }
