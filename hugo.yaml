@@ -53,8 +53,6 @@ params:
 
     footer:
         since: 2001 # copyright "since"
-        customText:
-            Some custom footer text
 
     dateFormat:
         # PEARL: You might think that readonly <input> elements of type "date" and "time" could be used so as to have 
