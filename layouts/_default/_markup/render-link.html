@@ -1,15 +1,20 @@
 <!-- 
     from https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_markup/render-link.html 
-	adjusted by me to:
-     - issue a warning when an internal link is not found.
-     - add 'class="external"' when the link is external.
-     - add 'target="_blank"' when the link is external.
+	adjusted by me as follows:
+     - when the link is external:
+       - add 'class="external"' 
+       - and 'target="_blank"'
+     - when the link is internal:
+       - issue an error, rather than a warning, if the resource is not found.
+       - issue a warning if the text of the link does not match the title of the page.
+       - prefix the link text with "michael.gr - "
 -->
 {{- $u := urls.Parse .Destination -}}
 {{- $href := $u.String -}}
 {{- $class := "" -}}
 {{- $target := "" -}}
-{{- $prefix := "" -}}
+{{- $text := .Text | transform.HTMLUnescape -}}
+{{- $pagePath := .Page.Path -}}
 {{- if strings.HasPrefix $u.String "#" -}}
 	{{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
 {{- else if $href -}}
@@ -17,18 +22,20 @@
         {{- $class = "external" -}}
         {{- $target = "_blank" -}}
     {{- else -}}
-        {{- $prefix = "michael.gr - " -}}
 	    {{- $path := strings.TrimPrefix "./" $u.Path -}}
 	    {{- with or ($.PageInner.GetPage $path) ($.PageInner.Resources.Get $path) (resources.Get $path) -}}
+		    {{- $title := .Title | htmlUnescape -}}
+            {{- if eq $title $path -}}
+	            {{- $title = $text -}}
+            {{- end -}}
+            {{- if not (eq $text $title) -}}
+	            {{- warnf "Page %s: Link text '%s' should be '%s'" $pagePath $text $title -}}
+            {{- end -}}
 		    {{- $href = .RelPermalink -}}
-		    {{- with $u.RawQuery -}}
-			    {{- $href = printf "%s?%s" $href . -}}
-		    {{- end -}}
-		    {{- with $u.Fragment -}}
-			    {{- $href = printf "%s#%s" $href . -}}
-		    {{- end -}}
+		    {{- with $u.RawQuery -}}{{- $href = printf "%s?%s" $href . -}}{{- end -}}
+		    {{- with $u.Fragment -}}{{- $href = printf "%s#%s" $href . -}}{{- end -}}
 	    {{- else -}}
-	        {{- warnf "'%s': item not found: '%s'" .Page.Path .Destination  -}}
+	        {{- errorf "'%s': item not found: '%s'" .Page.Path .Destination -}}
 	    {{- end -}}
     {{- end -}}
 {{- end -}}
@@ -37,5 +44,5 @@
    href="{{ $href }}" 
    {{- with .Title }} title="{{ . }}" {{- end }} 
    {{- with $target }} target="{{ $target }}" {{- end }}
-   >{{- with $prefix }} {{ $prefix }} {{- end }}{{ .Text }}</a>
+   >{{ $text }}</a>
 {{- /**/ -}}
