@@ -13,7 +13,7 @@
 {{- $href := $u.String -}}
 {{- $class := "" -}}
 {{- $target := "" -}}
-{{- $text := .Text | transform.HTMLUnescape -}}
+{{- $text := .Text -}}
 {{- $pagePath := .Page.Path -}}
 {{- if strings.HasPrefix $u.String "#" -}}
 	{{- $href = printf "%s#%s" .PageInner.RelPermalink $u.Fragment -}}
@@ -24,7 +24,8 @@
     {{- else -}}
 	    {{- $path := strings.TrimPrefix "./" $u.Path -}}
 	    {{- with or ($.PageInner.GetPage $path) ($.PageInner.Resources.Get $path) (resources.Get $path) -}}
-		    {{- $title := .Title | htmlUnescape -}}
+		    {{- $title := .Title -}}
+            {{- /* ignore media files, for which hugo uses their path as their title. */ -}}
             {{- if eq $title $path -}}
 	            {{- $title = $text -}}
             {{- end -}}
