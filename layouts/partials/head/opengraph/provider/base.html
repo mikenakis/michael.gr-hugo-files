@@ -1,7 +1,7 @@
 {{- $title := partialCached "data/title" . .RelPermalink -}}
 {{- $description := partialCached "data/description" . .RelPermalink -}}
 
-<meta property='og:title' {{ printf "content=%q" $title | safeHTMLAttr }}>
+<meta property='og:title' {{ (printf "content=%q" ($title | strings.FirstUpper )) | safeHTMLAttr }}>
 <meta property='og:description' {{ printf "content=%q" $description | safeHTMLAttr }}>
 <meta property='og:url' content='{{ .Permalink }}'>
 <meta property='og:site_name' content='{{ .Site.Title }}'>
@@ -18,7 +18,7 @@
 {{- end -}}
 
 {{- if .IsPage -}}
-    <meta property='article:section' content='{{ .Section | title }}' />
+    <meta property='article:section' content='{{ .Section | title | strings.FirstUpper }}' />
     {{- range .Params.tags -}}
         <meta property='article:tag' content='{{ . }}' />
     {{- end -}}

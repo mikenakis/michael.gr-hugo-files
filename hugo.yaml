@@ -6,6 +6,7 @@ copyright: Michael Belivanakis (a.k.a. Mike Nakis)
 # themesDir: ../../../hugo-themes
 # contentDir: ../content
 theme: hugo-theme-stack
+titleCaseStyle: none
 
 # date:        the time coordinate when the post was first published.
 # lastmod:     the time coordinate when the post was last updated.
