@@ -213,9 +213,10 @@ markup:
                     inline:
                         - - \(
                           - \)
+            # typographer:
+            #     disable: true
         renderer:
-            ## Set to true if you have HTML content inside Markdown
-            unsafe: true
+            unsafe: true # Set to true if you have HTML content inside Markdown
     tableOfContents:
         startLevel: 3
         endLevel: 5
