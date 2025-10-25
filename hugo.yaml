@@ -41,8 +41,8 @@ pagination:
     pagerSize: 6
 
 permalinks:
-    post: /p/:slug/
-    page: /:slug/
+    post: /post/:filename/
+    page: /:filename/
 
 params:
     mainSections:
